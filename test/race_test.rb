@@ -25,6 +25,7 @@ class RaceTest < Minitest::Test
     salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5, 1, "60")
 
     assert_equal [], salida_crit.teams
+    binding.pry
   end
 
   def test_it_can_register_racers

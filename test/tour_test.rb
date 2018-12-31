@@ -113,10 +113,13 @@ class TourTest < Minitest::Test
     salida_crit.award_points
 
     expected = ({"GS Boulder Cycling"=>48,
-                "Rocky Mountain Road Club"=>4, 
+                "Rocky Mountain Road Club"=>4,
                 "Team Primal Racing"=>0,
                 "Bike Ambassadors"=>0,
                 "ColoBikeLaw.com"=>0})
     assert_equal expected, salida_omnium.points_awarded
+    assert_equal 2, salida_crit.race_points
+    assert_equal 2, salida_tt.race_points
+    assert_equal 0, salida_rr.race_points
   end
 end
