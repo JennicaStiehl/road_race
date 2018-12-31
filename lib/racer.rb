@@ -11,12 +11,12 @@ class Racer
     @points = 0
   end
 
-  def win_cash(amount)
-    @funds += amount
-  end
-
-  def win_points(number_of_points)
-    @points += number_of_points
-  end
+  # def win_cash(amount)
+  #   @funds += amount
+  # end
+  #
+  # def win_points(number_of_points)
+  #   @points += number_of_points
+  # end
 
 end
