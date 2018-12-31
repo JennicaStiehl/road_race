@@ -6,28 +6,29 @@ require './lib/racer'
 class RaceTest < Minitest::Test
 
   def test_it_exists
-    salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5)
+    salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5, 1, "60")
 
     assert_instance_of Race, salida_crit
   end
 
   def test_it_has_attributes
-    salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5)
+    salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5, 1, "60")
 
     assert_equal "Salida Criterium", salida_crit.name
     assert_equal "SW 3", salida_crit.category
     assert_equal 25, salida_crit.cost
     assert_equal 5, salida_crit.race_points
+    assert_equal 1, salida_crit.miles
   end
 
   def test_it_starts_the_day_without_participants
-    salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5)
+    salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5, 1, "60")
 
     assert_equal [], salida_crit.teams
   end
 
   def test_it_can_register_racers
-    salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5)
+    salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5, 1, "60")
     gs_boulder = Team.new("GS Boulder")
     jennica = Racer.new("Jennica Rodriguez", "SW 3", 200)
     ek = Racer.new("Eric Kenney", "SM 1", 150)
@@ -49,7 +50,7 @@ class RaceTest < Minitest::Test
   end
 
   def test_it_can_collect_money_from_racers
-    salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5)
+    salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5, 1, "60")
     gs_boulder = Team.new("GS Boulder")
     jennica = Racer.new("Jennica Rodriguez", "SW 3", 200)
     ek = Racer.new("Eric Kenney", "SM 1", 150)
@@ -72,7 +73,7 @@ class RaceTest < Minitest::Test
   end
 
   def test_it_does_not_award_points_when_participants_less_10
-    salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5)
+    salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5, 1, "60")
     gs_boulder = Team.new("GS Boulder")
     jennica = Racer.new("Jennica Rodriguez", "SW 3", 200)
     jennifer = Racer.new("Jennifer Barber", "SW 3", 150)
@@ -97,7 +98,7 @@ class RaceTest < Minitest::Test
   end
 
   def test_it_can_award_points
-    salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5)
+    salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5, 1, "60")
     gs_boulder = Team.new("GS Boulder Cycling")
     jennica = Racer.new("Jennica Rodriguez", "SW 3", 200)
     jennifer = Racer.new("Jennifer Barber", "SW 3", 150)
@@ -138,7 +139,7 @@ class RaceTest < Minitest::Test
             "Channa North-Hoffstaed"=>nil,
                          "Julie Dow"=>nil,
                        "Nancy Parker"=>nil,
-                         "Tammi Lake"=>nil 
+                         "Tammi Lake"=>nil
 })
     assert_equal expected, salida_crit.award_points
   end

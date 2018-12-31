@@ -1,18 +1,25 @@
 class Tour
   attr_reader   :name,
-                :num_races,
                 :total_revenue,
+                :num_races,
                 :races
 
-  def initialize(name, num_races)
+  def initialize(name)
     @name = name
-    @num_races = num_races
-    @total_revenue = 0
     @races = []
+    @num_races = 0
+    @total_revenue = 0
   end
 
   def add_race(race)
     @races << race
+    @num_races = @races.count
+  end
+
+  def total_miles
+    @races.inject(0) do |total, race|
+      total += (race.miles * race.laps)
+    end
   end
 
 end

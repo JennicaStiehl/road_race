@@ -2,15 +2,19 @@ class Race
   attr_reader   :name,
                 :category,
                 :cost,
-                :race_points
+                :race_points,
+                :miles,
+                :laps
   attr_accessor :teams,
                 :cash_flow
 
-  def initialize(name, category, cost, race_points)
+  def initialize(name, category, cost, race_points, miles, laps = 1)
     @name = name
     @category = category
     @cost = cost
     @race_points = race_points
+    @miles = miles
+    @laps = laps
     @teams = []
     @cash_flow = 0
   end
