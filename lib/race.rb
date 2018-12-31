@@ -4,9 +4,10 @@ class Race
                 :cost,
                 :race_points,
                 :miles,
-                :laps
+                :laps,
+                :participants
   attr_accessor :teams,
-                :cash_flow
+                :revenue
 
   def initialize(name, category, cost, race_points, miles, laps = 1)
     @name = name
@@ -16,40 +17,39 @@ class Race
     @miles = miles
     @laps = laps
     @teams = []
-    @cash_flow = 0
+    @revenue = 0
+    @participants = []
   end
 
   def register_team(team)
-    collect_fees(team)
-    @teams << team
+    add_team(team)
+    add_members(team)
+  end
+
+  def add_members(team)
     team.members.each do |member|
-      member.funds -= @cost
-    end
-  end
-
-  def collect_fees(team)
-    total_cash = 0
-      total_cash += (team.members.count * @cost)
-      @cash_flow += total_cash
-  end
-
-  def rank_racers
-    participants = []
-    @teams.each do |team|
-      team.members.sort_by do |member|
-        participants << member
+      if member.funds >= @cost
+        member.funds -= @cost
+        @participants << member
       end
     end
-    participants
+  end
+
+  def add_team(team)
+    @teams << team
+  end
+
+  def revenue
+      @revenue += (@participants.size * @cost)
   end
 
   def valid_for_points
-    rank_racers.count >= 10  && @race_points > 3
+    @participants.size >= 10  && @race_points > 3
   end
 
   def award_points
     results = {}
-    rank_racers.each_with_index do |racer, index|
+    @participants.each_with_index do |racer, index|
       if valid_for_points
         award = @race_points -= index
         racer.points += award

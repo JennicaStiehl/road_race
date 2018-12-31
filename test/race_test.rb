@@ -25,7 +25,6 @@ class RaceTest < Minitest::Test
     salida_crit = Race.new("Salida Criterium", "SW 3", 25, 5, 1, "60")
 
     assert_equal [], salida_crit.teams
-    binding.pry
   end
 
   def test_it_can_register_racers
@@ -68,10 +67,8 @@ class RaceTest < Minitest::Test
     rmrc.add_member(steve)
 
     salida_crit.register_team(gs_boulder)
-    assert_equal 100, salida_crit.cash_flow
-
     salida_crit.register_team(rmrc)
-    assert_equal 150, salida_crit.cash_flow
+    assert_equal 150, salida_crit.revenue
 
     assert_equal 175, jennica.funds
   end

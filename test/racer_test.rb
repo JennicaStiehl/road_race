@@ -38,11 +38,6 @@ class RacerTest < Minitest::Test
   #   assert_equal 175, jennica.funds
   # end
   #
-  # def test_it_can_win_points
-  #   jennica = Racer.new("Jennica", "SW 3", 150)
-  #   jennica.win_points(4)
-  #
-  #   assert_equal 4, jennica.points
-  # end
+
 
 end

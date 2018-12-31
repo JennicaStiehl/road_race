@@ -121,5 +121,6 @@ class TourTest < Minitest::Test
     assert_equal 2, salida_crit.race_points
     assert_equal 2, salida_tt.race_points
     assert_equal 0, salida_rr.race_points
+    assert_equal 750, salida_omnium.total_revenue
   end
 end

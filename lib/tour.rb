@@ -13,7 +13,14 @@ class Tour
 
   def add_race(race)
     @races << race
-    @num_races = @races.count
+    @num_races = @races.size
+  end
+
+  def total_revenue
+    @races.each do |race|
+      @total_revenue += race.revenue
+    end
+    @total_revenue
   end
 
   def total_miles
