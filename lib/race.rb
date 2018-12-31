@@ -20,15 +20,17 @@ class Race
   end
 
   def register_team(team)
+    collect_fees(team)
     @teams << team
-    collect_fees
+    team.members.each do |member|
+      member.funds -= @cost
+    end
   end
 
-  def collect_fees
-    @teams.inject(0) do |total_cash, team|
+  def collect_fees(team)
+    total_cash = 0
       total_cash += (team.members.count * @cost)
-      @cash_flow = total_cash
-    end
+      @cash_flow += total_cash
   end
 
   def rank_racers

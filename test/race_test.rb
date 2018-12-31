@@ -67,9 +67,12 @@ class RaceTest < Minitest::Test
     rmrc.add_member(steve)
 
     salida_crit.register_team(gs_boulder)
-    salida_crit.register_team(rmrc)
+    assert_equal 100, salida_crit.cash_flow
 
+    salida_crit.register_team(rmrc)
     assert_equal 150, salida_crit.cash_flow
+
+    assert_equal 175, jennica.funds
   end
 
   def test_it_does_not_award_points_when_participants_less_10
