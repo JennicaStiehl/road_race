@@ -22,4 +22,16 @@ class Tour
     end
   end
 
+  def points_awarded
+    points = {}
+    @races.each do |race|
+      race.teams.each do |team|
+        team.members.inject(0) do |total, member|
+          points[team.name] = total + member.points
+        end
+      end
+    end
+    points
+  end
+
 end

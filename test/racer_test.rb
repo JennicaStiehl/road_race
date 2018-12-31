@@ -23,13 +23,13 @@ class RacerTest < Minitest::Test
     assert_equal 0, jennica.points
   end
 
-  def test_it_can_add_racing_specialties
-    jennica = Racer.new("Jennica", "SW 3", 150)
-    jennica.add_specialty("road")
-    jennica.add_specialty("mountain")
-
-    assert_equal ["road", "mountain"], jennica.specialties
-  end
+  # def test_it_can_add_racing_specialties
+  #   jennica = Racer.new("Jennica", "SW 3", 150)
+  #   jennica.add_specialty("road")
+  #   jennica.add_specialty("mountain")
+  #
+  #   assert_equal ["road", "mountain"], jennica.specialties
+  # end
 
   def test_it_can_win_cash
     jennica = Racer.new("Jennica", "SW 3", 150)

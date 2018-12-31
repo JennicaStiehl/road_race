@@ -133,13 +133,13 @@ class RaceTest < Minitest::Test
     expected = ({"Jennica Rodriguez"=>5,
                    "Jennifer Barber"=>4,
                      "Natasha Danko"=>2,
-                       "Nicole Bell"=>nil,
-                 "Rebecca Serratoni"=>nil,
-                        "Joy Erdman"=>nil,
-            "Channa North-Hoffstaed"=>nil,
-                         "Julie Dow"=>nil,
-                       "Nancy Parker"=>nil,
-                         "Tammi Lake"=>nil
+                       "Nicole Bell"=>0,
+                 "Rebecca Serratoni"=>0,
+                        "Joy Erdman"=>0,
+            "Channa North-Hoffstaed"=>0,
+                         "Julie Dow"=>0,
+                       "Nancy Parker"=>0,
+                         "Tammi Lake"=>0
 })
     assert_equal expected, salida_crit.award_points
   end

@@ -41,15 +41,20 @@ class Race
     participants
   end
 
+  def valid_for_points
+    rank_racers.count >= 10  && @race_points > 3
+  end
+
   def award_points
     results = {}
     rank_racers.each_with_index do |racer, index|
-      if rank_racers.count >= 10
-        points = @race_points -= index unless @race_points < 3
+      if valid_for_points
+        award = @race_points -= index
+        racer.points += award
       else
-        points = 0
+        racer.points += 0
       end
-      results[racer.name] = points
+      results[racer.name] = racer.points
     end
     results
   end
